@@ -2,23 +2,31 @@ version: '3'
 
 services:
     php:
-        image: php:8.2-apache
+        image: php:7.2-apache
         volumes:
-            - .:/var/www/html
+        - ./php.ini:/usr/local/etc/php/php.ini
+        - ./html:/var/www/html
         ports:
-            - 15000:80
-        container_name: php7.2-trial2-type2
+        #こいつがフロントエンド
+        - 8080:80
     mysql:
-        platform: linux/x86_64 #Mac M1
-        image: mysql:5.7
+        image: mysql:8.0
         volumes:
-            #- /var/lib/mysql
-            - ./mysql_data:/var/lib/mysql
-
+        - ./mysql:/var/lib/mysql
         environment:
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_DATABASE=test
-            #- MYSQL_USER=root
-            #- MYSQL_PASSWORD=root
-        container_name: mysql5.7-trial2-typ2
-
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=root
+        - MYSQL_USER=root
+        - MYSQL_PASSWORD=root
+                - TZ=Asia/Tokyo
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=root
+        - MYSQL_USER=root
+        - MYSQL_PASSWORD=root
+        ports:
+        - 4040:80
+        volumes:
+        - ./phpmyadmin/sessions:/sessions
