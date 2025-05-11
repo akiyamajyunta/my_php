@@ -10,8 +10,8 @@
     <?php foreach ($travels as  $travel) { ?>
         <tr>
             <td><?= $travel['id'] ?></td>
-            <td><?= $travel['title'] ?></td>
-            <td><?= $travel['sentence'] ?></td>
+            <td><?= $travel['name'] ?></td>
+            <td><?= $travel['email'] ?></td>
         </tr>
     <?php 
     } ?>
