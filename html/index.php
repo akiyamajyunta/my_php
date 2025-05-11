@@ -7,5 +7,6 @@
 </head>
 <body>
     <a>hello</a>
+    <a>繋がったよ</a>
 </body>
 </html>
