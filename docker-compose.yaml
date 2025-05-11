@@ -18,10 +18,11 @@ services:
         - MYSQL_DATABASE=root
         - MYSQL_USER=root
         - MYSQL_PASSWORD=root
-                - TZ=Asia/Tokyo
-    phpmyadmin:
+        - TZ=Asia/Tokyo
+    phpMyAdmin:
         image: phpmyadmin/phpmyadmin
         environment:
+        - PMA_HOST=mysql
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=root
         - MYSQL_USER=root
