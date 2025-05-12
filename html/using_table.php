@@ -4,13 +4,15 @@
     try{
         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
 
-        $sql = 'CREATE TABLE users (
+        $sql = "CREATE TABLE  IF NOT EXISTS  users (
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(60) NOT NULL,
             email VARCHAR(255) NOT NULL
-            )';
+            )";
+
+        $pdo->query($sql);
         
-        $sql = "INSERT INTO users 
+        $sql = "INSERT INTO  users 
                     (name, email) 
                 VALUES 
                     ('田中', 'tanaka@gmail.com'),
@@ -21,6 +23,7 @@
         
         } catch (PDOException $e){
             exit ($e->getMessage());
+            #echo '接続できません';
         }
 
     $sql = 'SELECT * FROM users';
@@ -39,5 +42,3 @@
     $pdo = null;
 
     require_once 'show_table.php';
-
-
