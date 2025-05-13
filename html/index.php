@@ -55,7 +55,7 @@ if ($_GET) {
         </div>
     </form>
     <!-- 新規登録 -->
-    <form action="Registration.php" method="post">
+    <form action="new_registration.php" method="post">
         <div>
             <button type="submit">新規登録</button>
         </div>

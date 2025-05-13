@@ -1,12 +1,12 @@
 <?php
 session_start();
-if ($_POST) {
+if (($_POST)) {
     $name = $_POST['name'];
     $email = $_POST['mail'];
 
     $name = htmlspecialchars($name,ENT_QUOTES,'UTF-8');
     $email = htmlspecialchars($email,ENT_QUOTES,'UTF-8');
-
+#(isset($_POST['delete']))
     if (($_POST['name'] === '') and ($_POST['mail'] === '') ){
         $name = "名前";
         $mail = "メール";
@@ -27,7 +27,8 @@ if ($_POST) {
     $email = 'yamada@gmail.com';
 ?>
 <?php
-require_once 'using_table.php'
+// require_once 'using_table.php';
+require_once 'using_table.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,18 +60,18 @@ require_once 'using_table.php'
     </div>
     <div>
         <table>
-            <?php foreach ($travels as  $travel) { ?>
-                    <!-- <td><?= $travel['id'] ?></td> -->
+            <?php foreach ($memos as  $memo) { ?>
+                    <!-- <td><?= $memo['id'] ?></td> -->
                     <div>
                         <div>
-                            <a><?= $travel['title'] ?></a>
+                            <a><?= $memo['title'] ?></a>
                         </div>
                         <div>
-                            <a><?= $travel['sentence'] ?></a>
+                            <a><?= $memo['sentence'] ?></a>
                         </div>
                         <form action='using_table.php' method="post">
                             <div>
-                                <button name="delete" value=<?= $travel['id'] ?> type="submit">削除</button>
+                                <button name="delete" value=<?= $memo['id'] ?> type="submit">削除</button>
                             </div>
                         </form>
                         <hr>
