@@ -1,3 +1,31 @@
+<?php
+if ($_GET) {
+    if (($_GET['name']) and ($_GET['mail'])){
+            $message = '名前とメールが入力されていません';
+            $name = 'ゲスト';
+    }else{
+        if ($_GET['name']){
+            $message = '名前が入力されていません';
+        }else{
+            $name = 'ゲスト';
+        }
+
+        if ($_GET['mail']){
+            $message = 'メールが入力されていません';
+            
+        }else{
+            $name = 'ゲスト';
+        }
+    }
+}else{
+    $message = ''; 
+    $name = 'ゲスト';
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,21 +34,31 @@
     <title>Document</title>
 </head>
 <body>
-    <a>ログイン</a>
-    <a>繋がったよ</a>
-
-    <!-- <form action="using_table.php" method="post">
+    <a>こんにちは <?php echo "<a>{$name}</a>";?>さん</a>
+    <div>
+        <a>ログイン</a>
         <div>
-            <label for="name">ユーザー名:</label>
+            <?php echo "<a>{$message}</a>";?>
+        </div>    
+    </div>
+    <form action="main.php" method="post">
+        <div>
+            <label>ユーザー名:</label>
             <input name="name" id="name" type="text">
         </div>
         <div>
-            <label for="age">メールアドレス</label>
-            <input name="age" id="age" type="number">
+            <label>メールアドレス</label>
+            <input name="mail" id="mail" type="text">
         </div>
         <div>
-            <button type="submit">Submit</button>
+            <button type="submit">ログイン</button>
         </div>
-    </form> -->
+    </form>
+    <!-- 新規登録 -->
+    <form action="Registration.php" method="post">
+        <div>
+            <button type="submit">新規登録</button>
+        </div>
+    </form>
 </body>
 </html>
