@@ -14,23 +14,24 @@
 
                     $statement->execute();
 
-                    header("Location: main.php");
+                    header("Location: ../Front/main.php");
                     exit();
                 }
             }
         }
+        //    require_once '../SQL/test2.php';
 
         function memos_table_insert_data(){
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
                 if ($_GET) {
                 if (($_GET['title'] === '') and ($_GET['sentence'] === '') ){
-                    header("Location: main.php");
+                    header("Location: ../Front/main.php");
                     exit();
                     } else if ($_GET['title'] === '') {
-                        header("Location: main.php");
+                        header("Location: ../Front/main.php");
                         exit();
                     } else if ($_GET['sentence'] === '') {
-                        header("Location: main.php");
+                        header("Location: ../Front/main.php");
                     }else {
                         $title    = $_GET['title'];
                         $sentence = $_GET['sentence'];
@@ -46,7 +47,7 @@
                         $statement->bindValue(':sentence', $sentence, PDO::PARAM_STR);
 
                         $statement->execute();
-                        header("Location: main.php");
+                        header("Location: ../Front/main.php");
                         exit();
                 }
 

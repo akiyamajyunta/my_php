@@ -29,7 +29,8 @@ if (($_POST)) {
 ?>
 <?php
 // require_once 'using_table.php';
-require_once 'using_table.php';
+//    require_once '../Set/test2.php';
+require_once '../SetSql/using_table.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +44,7 @@ require_once 'using_table.php';
         <a><?= $name ?></a>
     </div>
     <div>
-        <form action="using_table.php" method="get">
+        <form action="../SetSql/using_table.php" method="get">
             <div>
                 <div>
                     <input name="title" id="title" type="text">
@@ -70,7 +71,7 @@ require_once 'using_table.php';
                         <div>
                             <a><?= $memo['sentence'] ?></a>
                         </div>
-                        <form action='using_table.php' method="post">
+                        <form action='../SetSql/using_table.php' method="post">
                             <div>
                                 <button name="delete" value=<?= $memo['id'] ?> type="submit">削除</button>
                             </div>
@@ -83,7 +84,7 @@ require_once 'using_table.php';
     </div>
 
 
-    <form action="index.php" method="post">
+    <form action="../Front/index.php" method="post">
         <div>
             <button type="submit">ログアウト</button>
         </div>

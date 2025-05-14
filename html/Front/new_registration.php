@@ -9,7 +9,7 @@
     <div>
         <a>新規登録</a>
     </div>
-    <form action="use_information.php" method="get">
+    <form action="index.php" method="get">
         <div>
             <label>ユーザー名:</label>
             <input name="name" id="name" type="text">
