@@ -9,7 +9,7 @@
     <div>
         <a>新規登録</a>
     </div>
-    <form action="index.php" method="get">
+    <form action="../SetSql/use_information.php" method="get">
         <div>
             <label>ユーザー名:</label>
             <input name="name" id="name" type="text">
@@ -34,3 +34,8 @@
     </form>
 </body>
 </html>
+<!-- 
+山田
+6JA4ES0O2IL51B9HYWXNZGMRVCPTUs
+phononiwasi@gmail.com
+1111 -->

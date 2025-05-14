@@ -1,19 +1,8 @@
 <?php
-session_start();
-
-    if (!empty($_SESSION['errors'])) {
-        foreach ($_SESSION['errors'] as $error) {
-            $message = $error;
-        }
-        unset($_SESSION['errors']);
-    }
-
-    //.$message = ''; 
-    $name = 'ゲスト';
-
-
-
-
+require '../MakeTable/info.php';
+    make_table_info();
+        //.$message = ''; 
+        $name = 'ゲスト';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,3 +46,7 @@ session_start();
     </form>
 </body>
 </html>
+
+
+
+<!-- 始めにユーザーを格納するテーブルを作製しなければならない(義務) -->

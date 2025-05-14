@@ -1,5 +1,6 @@
 <?
     //ここはログインした時の処理。未入力だったりすると、元のindex.phpへ戻す;
+    require '../DataAction/info_sql_using.php';
     session_start();
     $err = [];
 
@@ -28,8 +29,17 @@
         exit;
     }else{
         // エラーがないなら場合は`審査後、.phpへリダイレクト
-        //ここに、審査を行う関数を書く
-        header("Location: ../Front/main.php");
+        //ここに、ログインの審査を行う関数を書く
+        //login_Check($email,$password)
+        if (login_Check($mail,$password)){
+            $data = login_Check($mail,$password);
+                echo  $data[0];
+                echo  $data[1];
+        }else{
+                echo 'ログインできませんでした';
+        }
+
+        //header("Location: ../Front/main.php");
         exit;
     }
 

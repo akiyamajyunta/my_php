@@ -6,7 +6,7 @@
                     $random_string = substr($shuffled_chars, 0, $length);
                     return $random_string . 's';
             }
-//個人情報な文字列の生成     
+//個人情報情報の挿入   
         function info_table_insert_data(){
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
                 if ($_GET) {
@@ -39,12 +39,34 @@
                     $statement->bindValue(':password', $password, PDO::PARAM_STR);
 
                     $statement->execute();
-                    header("Location: index.php");
+                    header("Location: ../Front/index.php");
                     exit();
                 }
 
             }
         }
-            // name VARCHAR(60) NOT NULL,
-            // table_name VARCHAR(60) NOT NULL,
-            // mail VARCHAR(255) NOT NULL
+//ログインしてデータの照合(ログイン機能) 
+        function login_Check($email,$password){
+        $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
+
+        #$sql = "SELECT * info WHERE mail == :mail and password == :password:";
+        $sql = "SELECT * FROM info WHERE mail = :mail AND password = :password";
+
+        $statement = $pdo->prepare($sql);
+
+        $statement->bindValue(':mail', $email, PDO::PARAM_STR);
+        $statement->bindValue(':password', $password, PDO::PARAM_STR);
+
+        $statement->execute();     
+        
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($result){
+            $name = $result['name'];
+            $table_name = $result['table_name'];
+            return array($name, $table_name);
+        } else {
+            return false;
+        }
+
+}

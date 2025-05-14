@@ -1,3 +1,5 @@
 # .gitignore
 
 mysql_data/
+
+phpmyadmin/
