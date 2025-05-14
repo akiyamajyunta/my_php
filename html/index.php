@@ -43,12 +43,12 @@ if ($_GET) {
     </div>
     <form action="main.php" method="post">
         <div>
-            <label>ユーザー名:</label>
-            <input name="name" id="name" type="text">
-        </div>
-        <div>
             <label>メールアドレス</label>
             <input name="mail" id="mail" type="text">
+        </div>
+        <div>
+            <label>パスワード</label>
+            <input name="password" id="password" type="text">
         </div>
         <div>
             <button type="submit">ログイン</button>

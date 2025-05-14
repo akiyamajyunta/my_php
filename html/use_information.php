@@ -8,7 +8,8 @@
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(60) NOT NULL,
             table_name VARCHAR(60) NOT NULL,
-            mail VARCHAR(255) NOT NULL
+            mail VARCHAR(255) NOT NULL,
+            password VARCHAR(255) NOT NULL
             )";
 
         $pdo->query($sql);
@@ -50,7 +51,9 @@
                         <div>
                             <a><?= $info['mail'] ?></a>
                         </div>
-
+                        <div>
+                            <a><?= $info['password'] ?></a>
+                        </div>
                         <hr>
                     </div>
                 <?php 

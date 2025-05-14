@@ -1,20 +1,20 @@
 <?php
 session_start();
 if (($_POST)) {
-    $name = $_POST['name'];
+    $password = $_POST['password'];
     $email = $_POST['mail'];
 
-    $name = htmlspecialchars($name,ENT_QUOTES,'UTF-8');
+    $password = htmlspecialchars($password,ENT_QUOTES,'UTF-8');
     $email = htmlspecialchars($email,ENT_QUOTES,'UTF-8');
 #(isset($_POST['delete']))
-    if (($_POST['name'] === '') and ($_POST['mail'] === '') ){
-        $name = "名前";
+    if (($_POST['password'] === '') and ($_POST['mail'] === '') ){
+        $password = "名前";
         $mail = "メール";
-        header("Location: index.php?name=" . urlencode($name) . "&mail=" . urlencode($mail));
+        header("Location: index.php?name=" . urlencode($password) . "&mail=" . urlencode($mail));
         exit();
-    } else if ($_POST['name'] === '') {
-        $name = "名前";
-        header("Location: index.php?name=" .urlencode($name). "&mail=" );
+    } else if ($_POST['password'] === '') {
+        $password = "名前";
+        header("Location: index.php?name=" .urlencode($password). "&mail=" );
         exit();
     } else if ($_POST['mail'] === '') {
         $mail = "メール";
@@ -23,7 +23,8 @@ if (($_POST)) {
         echo 'ログインに成功しました';
     }
 }
-    $name = "山田";
+    //$password = "山田";
+    $name = '山田';
     $email = 'yamada@gmail.com';
 ?>
 <?php

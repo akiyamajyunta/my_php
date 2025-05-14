@@ -19,6 +19,10 @@
             <input name="mail" id="mail" type="text">
         </div>
         <div>
+            <label>パスワード</label>
+            <input name="password" id="password" type="text">
+        </div>
+        <div>
             <button type="submit">新規登録</button>
         </div>
     </form>

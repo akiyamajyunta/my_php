@@ -10,7 +10,7 @@
         function info_table_insert_data(){
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
                 if ($_GET) {
-                if (($_GET['name'] === '') and ($_GET['mail'] === '') ){
+                if (($_GET['name'] === '') and ($_GET['mail'] === '')and ($_GET['password'] === '')){
                     header("Location: index.php");
                     exit();
                 } else if ($_GET['name'] === '') {
@@ -18,21 +18,25 @@
                     exit();
                 } else if ($_GET['mail'] === '') {
                     header("Location: index.php");
+                }else if ($_GET['password'] === '') {
+                    header("Location: index.php");
                 }else {
                     $name    = $_GET['name'];
                     $table_name  =  random_string(32);
                     $mail = $_GET['mail'];
+                    $password = $_GET['password'];
                     
                     $sql = "INSERT INTO info
-                                (name, table_name, mail) 
+                                (name, table_name, mail, password) 
                             VALUES 
-                                (:name , :table_name, :mail)";
+                                (:name , :table_name, :mail, :password)";
 
                     $statement = $pdo->prepare($sql);
 
                     $statement->bindValue(':name', $name, PDO::PARAM_STR);
                     $statement->bindValue(':table_name', $table_name, PDO::PARAM_STR);
                     $statement->bindValue(':mail', $mail, PDO::PARAM_STR);
+                    $statement->bindValue(':password', $password, PDO::PARAM_STR);
 
                     $statement->execute();
                     header("Location: index.php");
