@@ -1,32 +1,11 @@
 <?php
-session_start();
-if (($_POST)) {
-    $password = $_POST['password'];
-    $email = $_POST['mail'];
 
-    $password = htmlspecialchars($password,ENT_QUOTES,'UTF-8');
-    $email = htmlspecialchars($email,ENT_QUOTES,'UTF-8');
-#(isset($_POST['delete']))
-    if (($_POST['password'] === '') and ($_POST['mail'] === '') ){
-        $password = "名前";
-        $mail = "メール";
-        header("Location: index.php?name=" . urlencode($password) . "&mail=" . urlencode($mail));
-        exit();
-    } else if ($_POST['password'] === '') {
-        $password = "名前";
-        header("Location: index.php?name=" .urlencode($password). "&mail=" );
-        exit();
-    } else if ($_POST['mail'] === '') {
-        $mail = "メール";
-        header("Location: index.php?name=" . "&mail=" . urlencode($mail));
-    }else {
-        echo 'ログインに成功しました';
-    }
-}
-    //$password = "山田";
-    $name = '山田';
-    $email = 'yamada@gmail.com';
+
+
+$name = '山田';
 ?>
+
+
 <?php
 // require_once 'using_table.php';
 //    require_once '../Set/test2.php';
@@ -82,7 +61,6 @@ require_once '../SetSql/using_table.php';
                 } ?>
         </table> 
     </div>
-
 
     <form action="../Front/index.php" method="post">
         <div>

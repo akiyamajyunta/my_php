@@ -1,6 +1,6 @@
 <?
-//New_registration.php
-            const RANDOM_CHARS = 'abcdefghijklmnopqrstuvwxyz';
+//ランダムな文字列の生成
+            const RANDOM_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
                     function random_string($length) {
                     $shuffled_chars = str_shuffle(RANDOM_CHARS);
                     $random_string = substr($shuffled_chars, 0, $length);
@@ -22,7 +22,7 @@
                     header("Location: index.php");
                 }else {
                     $name    = $_GET['name'];
-                    $table_name  =  random_string(32);
+                    $table_name  =  random_string(29);
                     $mail = $_GET['mail'];
                     $password = $_GET['password'];
                     

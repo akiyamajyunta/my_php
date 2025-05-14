@@ -10,4 +10,4 @@
     cd ./my_php
     docker-compose up --build
 
-http://localhost:8080/index.php にアクセス
+http://localhost:8080/Front/index.php にアクセス

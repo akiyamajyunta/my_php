@@ -23,7 +23,7 @@
             <input name="password" id="password" type="text">
         </div>
         <div>
-            <button type="submit">新規登録</button>
+            <button type="submit">登録する</button>
         </div>
     </form>
 

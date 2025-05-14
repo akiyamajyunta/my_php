@@ -1,26 +1,15 @@
 <?php
-if ($_GET) {
-    if (($_GET['name']) and ($_GET['mail'])){
-            $message = '名前とメールが入力されていません';
-            $name = 'ゲスト';
-    }else{
-        if ($_GET['name']){
-            $message = '名前が入力されていません';
-        }else{
-            $name = 'ゲスト';
-        }
+session_start();
 
-        if ($_GET['mail']){
-            $message = 'メールが入力されていません';
-            
-        }else{
-            $name = 'ゲスト';
+    if (!empty($_SESSION['errors'])) {
+        foreach ($_SESSION['errors'] as $error) {
+            $message = $error;
         }
+        unset($_SESSION['errors']);
     }
-}else{
-    $message = ''; 
+
+    //.$message = ''; 
     $name = 'ゲスト';
-}
 
 
 
@@ -38,17 +27,23 @@ if ($_GET) {
     <div>
         <a>ログイン</a>
         <div>
-            <?php echo "<a>{$message}</a>";?>
-        </div>    
+            <?php if (!empty($message)): ?>
+                <a><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></a>
+            <?php endif; ?>
+        </div>
     </div>
-    <form action="main.php" method="post">
+    <form action='../PageAction/user_login.php' method="post">
         <div>
             <label>メールアドレス</label>
             <input name="mail" id="mail" type="text">
         </div>
         <div>
             <label>パスワード</label>
-            <input name="password" id="password" type="text">
+            <input name="password" id="password" type="password">
+        </div>
+        <div>
+            <label>パスワード再入力</label>
+            <input name="password_next" id="password_next" type="password">
         </div>
         <div>
             <button type="submit">ログイン</button>
