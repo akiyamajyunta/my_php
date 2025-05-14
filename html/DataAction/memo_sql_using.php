@@ -1,5 +1,5 @@
 <?php
-
+//データの削除
     function memos_table_delete(){
         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
             if ($_POST) {
@@ -19,8 +19,8 @@
                 }
             }
         }
-        //    require_once '../SQL/test2.php';
 
+//データの挿入
         function memos_table_insert_data(){
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
                 if ($_GET) {

@@ -6,7 +6,7 @@
                     $random_string = substr($shuffled_chars, 0, $length);
                     return $random_string . 's';
             }
-            
+//個人情報な文字列の生成     
         function info_table_insert_data(){
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
                 if ($_GET) {
