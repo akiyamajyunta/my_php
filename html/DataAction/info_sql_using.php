@@ -26,7 +26,7 @@
                     $random_string = substr($shuffled_chars, 0, $length);
                     return $random_string . 's';
             }
-//個人情報情報の挿入   
+//個人情報情報のテーブルへのs挿入、   
         function info_table_insert_data(){
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
                 if ($_GET) {
@@ -81,13 +81,13 @@
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         if ($result){
-            $name = $result['name'];
-            $table_name = $result['table_name'];
-            return array($name, $table_name);
-        } else {
-            return false;
-        }
 
+            header("Location: ../Front/main.php");
+            exit;
+        } else {
+            header("Location: ../Front/index.php");
+        }
+//Insert_Info_store($table_name)
 }
 
 //個人情報情報を出す(table_nameより)

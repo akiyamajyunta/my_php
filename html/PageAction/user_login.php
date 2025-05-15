@@ -32,20 +32,6 @@
         // エラーがないなら場合は`審査後、.phpへリダイレクト
         //ここに、ログインの審査を行う関数を書く
         //login_Check($email,$password)
-        if (login_Check($mail,$password)){
-            $data = login_Check($mail,$password);//返り値は　$name, $table_name
+        login_Check($mail,$password);
 
-            Insert_Info_store($data[1]);
-
-            header("Location: ../Front/main.php");
-            exit;
-        }else{
-            //session_start();
-            $data = 'ログインできませんでした';
-            echo $data;
-            //header("Location: ../Front/index.php?data=" . urlencode($data));
-            exit;
-        }
-
-        exit;
     }

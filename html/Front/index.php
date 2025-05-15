@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $data = $_GET['data'] ?? null;
+    //$data = $_GET['data'] ?? null;
     #始めにユーザーを格納するテーブルを作製しなければならない(義務) 
 
     require '../DataAction/info_sql_using.php';

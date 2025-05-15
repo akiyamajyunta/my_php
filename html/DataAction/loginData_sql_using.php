@@ -5,7 +5,7 @@
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
 
             $sql = "CREATE TABLE  IF NOT EXISTS  InfoStore (
-                table_name VARCHAR(60) NOT NULL,
+                table_name VARCHAR(60) NOT NULL
                 )";
 
             $pdo->query($sql);
@@ -20,12 +20,11 @@
         try{
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
 //REPLACE 上書きできるかも
-            $sql = "INSERT INTO InfoStore 
-                        (table_name) 
-                    VALUES 
-                        (:table_name)";
+            $sql = "UPDATE InfoStore 
+                        SET 
+                    table_name = :table_name";
             $statement = $pdo->prepare($sql);
-            $pdo->query($sql);
+            //$pdo->query($sql);
 
             $statement->bindValue(':table_name', $table_name, PDO::PARAM_STR);
 
@@ -47,15 +46,14 @@
             $row = $statement->fetch(PDO::FETCH_ASSOC);
             $statement = null;
             $pdo = null;
-            
+
             $InfoStore = [];
             $InfoStore[] = $row;
+            
             return $InfoStore[0];
-            // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            //     $InfoStore[] = $row;
-            // }
     }
 
+//データの削除
     function Delete_Info_store(){
         
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
