@@ -1,6 +1,7 @@
 <?
     //ここはログインした時の処理。未入力だったりすると、元のindex.phpへ戻す;
     require '../DataAction/info_sql_using.php';
+    require '../DataAction/loginData_sql_using.php';
     session_start();
     $err = [];
 
@@ -32,15 +33,19 @@
         //ここに、ログインの審査を行う関数を書く
         //login_Check($email,$password)
         if (login_Check($mail,$password)){
-            $data = login_Check($mail,$password);
-                echo  $data[0];
-                echo  $data[1];
+            $data = login_Check($mail,$password);//返り値は　$name, $table_name
+
+            Insert_Info_store($data[1]);
+
+            header("Location: ../Front/main.php");
+            exit;
         }else{
-                echo 'ログインできませんでした';
+            //session_start();
+            $data = 'ログインできませんでした';
+            echo $data;
+            //header("Location: ../Front/index.php?data=" . urlencode($data));
+            exit;
         }
 
-        //header("Location: ../Front/main.php");
         exit;
     }
-
-    //'../PageAction/user_login.php'

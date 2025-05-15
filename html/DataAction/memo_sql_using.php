@@ -1,4 +1,16 @@
 <?php
+//メモテーブルの作製
+    function memo_create_table(){
+        $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
+
+        $sql = "CREATE TABLE  IF NOT EXISTS  memo (
+            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(60) NOT NULL,
+            sentence VARCHAR(255) NOT NULL
+            )";
+
+        $pdo->query($sql);
+    }
 //データの削除
     function memos_table_delete(){
         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
@@ -50,7 +62,6 @@
                         header("Location: ../Front/main.php");
                         exit();
                 }
-
             }
         }
 

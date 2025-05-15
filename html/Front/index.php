@@ -1,8 +1,18 @@
 <?php
-require '../MakeTable/info.php';
+    session_start();
+    $data = $_GET['data'] ?? null;
+    #始めにユーザーを格納するテーブルを作製しなければならない(義務) 
+
+    require '../DataAction/info_sql_using.php';
     make_table_info();
-        //.$message = ''; 
-        $name = 'ゲスト';
+    require '../DataAction/loginData_sql_using.php';
+    make_table_Info_store();
+
+
+
+
+    //.$message = ''; 
+    $name = 'ゲスト';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +27,7 @@ require '../MakeTable/info.php';
         <a>ログイン</a>
         <div>
             <?php if (!empty($message)): ?>
-                <a><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></a>
+                <a><?php echo $message; ?></a>
             <?php endif; ?>
         </div>
     </div>
@@ -49,4 +59,3 @@ require '../MakeTable/info.php';
 
 
 
-<!-- 始めにユーザーを格納するテーブルを作製しなければならない(義務) -->

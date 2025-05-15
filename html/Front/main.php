@@ -1,16 +1,9 @@
 <?php
-
-
-
 $name = '山田';
-?>
 
-
-<?php
-// require_once 'using_table.php';
-//    require_once '../Set/test2.php';
 require_once '../SetSql/using_table.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +13,9 @@ require_once '../SetSql/using_table.php';
 </head>
 <body>
     <div>
-        <a><?= $name ?></a>
+        <?php if (!empty($name)): ?>
+            <a><?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?></a>
+        <?php endif; ?>
     </div>
     <div>
         <form action="../SetSql/using_table.php" method="get">

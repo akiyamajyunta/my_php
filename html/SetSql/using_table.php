@@ -2,15 +2,7 @@
     include '../DataAction/memo_sql_using.php';
     //    require_once '../SQL/test2.php';
     try{
-        $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
-
-        $sql = "CREATE TABLE  IF NOT EXISTS  memo (
-            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            title VARCHAR(60) NOT NULL,
-            sentence VARCHAR(255) NOT NULL
-            )";
-
-        $pdo->query($sql);
+        memo_create_table();
 //データを格納
         memos_table_insert_data();
 
@@ -22,7 +14,8 @@
             exit ($e->getMessage());
             #echo '接続できません';
         }
-
+    $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
+    
     $sql = 'SELECT * FROM memo';
     
     $statement = $pdo->prepare($sql);

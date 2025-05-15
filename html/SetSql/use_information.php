@@ -1,10 +1,10 @@
 <?php
-    //個人情報のテーブルの作製
+    //個人情報のテーブル表示。デバック用ページ
     include '../DataAction/info_sql_using.php';
     try{
 
         //新規ユーザーのデータを格納
-                info_table_insert_data();
+            info_table_insert_data();
 
         } catch (PDOException $e){
             exit ($e->getMessage());
