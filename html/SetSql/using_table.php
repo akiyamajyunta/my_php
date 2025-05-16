@@ -1,6 +1,5 @@
 <?php
     include '../DataAction/memo_sql_using.php';
-    //    require_once '../SQL/test2.php';
     try{
         memo_create_table();
 //データを格納

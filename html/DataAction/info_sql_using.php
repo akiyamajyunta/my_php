@@ -60,39 +60,13 @@
     }
 ////////////////////////////////////////////////////////////////////////////
 
-//require_once 'loginData_sql_using.php';
-//ログインしてデータの照合(ログイン機能) 
-    function login_Check($email,$password){
-        $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
 
-        $sql = "SELECT * FROM info WHERE mail = :mail AND password = :password";
-
-        $statement = $pdo->prepare($sql);
-
-        $statement->bindValue(':mail', $email, PDO::PARAM_STR);
-        $statement->bindValue(':password', $password, PDO::PARAM_STR);
-        $statement->execute();
-
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-        if($result){
-            //ログインに成功
-            //echo $result['table_name'];これでテーブル名が見れる(確認済)
-            // $table_name = $result['table_name'];
-            // Insert_Info_store($table_name);
-            header("Location: ../Front/main.php");
-            //exit;
-        }else{
-            //ログイン失敗
-            $message = 'ログイン失敗';
-            header("Location: ../Front/index.php?message=$message");
-        }
-    }
 
 //個人情報情報を出す(table_nameより)
     function put_user_info($table_name){
         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
 
-        $sql = "SELECT * FROM info WHERE  table_name = : table_name ";
+        $sql = "SELECT * FROM info WHERE  table_name = :table_name ";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(':table_name', $table_name, PDO::PARAM_STR);
         $statement->execute();     
@@ -100,11 +74,9 @@
 
         if ($result){
             $name = $result['name'];
-            $mail = $result['mail'];
-            return array($name, $mail);
+            return $name;
         } else {
-            return false;
+            return 'ななし';
         }
     }
-function xxx(){
-    echo "デーータが読み込まれました";}
+

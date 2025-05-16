@@ -10,9 +10,9 @@
     session_start();
     //$data = $_GET['data'] ?? null;
     #始めにユーザーを格納するテーブルを作製しなければならない(義務) 
-
-    make_table_Info_store();
     make_table_info();
+    make_table_Info_store();
+    
     $name = 'ゲスト';
 ?>
 <!DOCTYPE html>
@@ -58,9 +58,3 @@
 </body>
 </html>
 
-
-
-<!-- 山田
-YLRFBP9SIWXCHOV75M361UGKD40E8s
-phononiwasi@gmail.com
-123 -->
