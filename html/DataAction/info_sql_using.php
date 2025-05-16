@@ -31,11 +31,10 @@
     function info_table_insert_data(){
         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
             if ($_GET) {
-                if (($_GET['name'] === '') or ($_GET['mail'] === '')  or($_GET['password'] === '')){
+                if (($_GET['name'] === '') or ($_GET['mail'] === '') or ($_GET['password'] === '')){
                         $message = '入力されてないフォームがあります';
                         header("Location: ../Front/new_registration.php?message=$message");
-                }
-            }else {
+                }else {
                 $name = $_GET['name'];
                 $table_name = random_string(29);
                 $mail = $_GET['mail'];
@@ -58,6 +57,7 @@
                 exit();
             }
         }
+    }
 ////////////////////////////////////////////////////////////////////////////
 
 //require_once 'loginData_sql_using.php';
@@ -106,3 +106,5 @@
             return false;
         }
     }
+function xxx(){
+    echo "デーータが読み込まれました";}

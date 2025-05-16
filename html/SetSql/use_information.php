@@ -1,12 +1,12 @@
 <?php
     //個人情報のテーブル表示。デバック用ページ
     include '../DataAction/info_sql_using.php';
-    try{
+    //try{
         //新規ユーザーのデータを格納
             info_table_insert_data();
-        } catch (PDOException $e){
-            exit ($e->getMessage());
-        }
+        // } catch (PDOException $e){
+        //     exit ($e->getMessage());
+        // }
 #下下下下下下下下下下下下下下下下デバック用下下下下下下下下下下下下下下下下下下下下下下下
  $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
     $sql = 'SELECT * FROM info';
