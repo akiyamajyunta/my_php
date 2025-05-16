@@ -26,16 +26,14 @@
         $random_string = substr($shuffled_chars, 0, $length);
         return $random_string . 's';
     }
-//個人情報情報のテーブルへの挿入,登録、   
+//個人情報情報のテーブルへの挿入,登録、 
+//new_registration.php  
     function info_table_insert_data(){
         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
             if ($_GET) {
-                if (($_GET['name'] === '') and ($_GET['mail'] === '')and ($_GET['password'] === '')){
-                        $message = '入力してください';
-                        header("Location: ../Front/index.php?username=$message");
-                } else if (($_GET['name'] === '') or ($_GET['mail'] === '')  or($_GET['password'] === '')){
+                if (($_GET['name'] === '') or ($_GET['mail'] === '')  or($_GET['password'] === '')){
                         $message = '入力されてないフォームがあります';
-                        header("Location: ../Front/index.php?username=$message");
+                        header("Location: ../Front/new_registration.php?message=$message");
                 }
             }else {
                 $name = $_GET['name'];
@@ -60,7 +58,9 @@
                 exit();
             }
         }
-    
+////////////////////////////////////////////////////////////////////////////
+
+//require_once 'loginData_sql_using.php';
 //ログインしてデータの照合(ログイン機能) 
     function login_Check($email,$password){
         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
@@ -75,8 +75,12 @@
 
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         if($result){
+            //ログインに成功
+            //echo $result['table_name'];これでテーブル名が見れる(確認済)
+            // $table_name = $result['table_name'];
+            // Insert_Info_store($table_name);
             header("Location: ../Front/main.php");
-            exit;
+            //exit;
         }else{
             //ログイン失敗
             $message = 'ログイン失敗';

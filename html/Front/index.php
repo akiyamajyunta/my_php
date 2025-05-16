@@ -3,11 +3,10 @@
     //$data = $_GET['data'] ?? null;
     #始めにユーザーを格納するテーブルを作製しなければならない(義務) 
 
-    require '../DataAction/info_sql_using.php';
-    make_table_info();
-    require '../DataAction/loginData_sql_using.php';
+    require_once '../DataAction/info_sql_using.php';
+    require_once '../DataAction/loginData_sql_using.php';
     make_table_Info_store();
-
+    make_table_info();
     $name = 'ゲスト';
 ?>
 <!DOCTYPE html>
@@ -55,3 +54,7 @@
 
 
 
+<!-- 山田
+YLRFBP9SIWXCHOV75M361UGKD40E8s
+phononiwasi@gmail.com
+123 -->

@@ -1,3 +1,11 @@
+<?
+if (isset($_GET['message'])) {
+    $message = $_GET['message'];
+} 
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +16,11 @@
 <body>
     <div>
         <a>新規登録</a>
+    </div>
+    <div>
+        <?php if (!empty($message)): ?>
+            <a><?php echo $message; ?></a>
+        <?php endif; ?>
     </div>
     <form action="../SetSql/use_information.php" method="get">
         <div>
