@@ -1,13 +1,16 @@
 <?php
+
+    require_once '../DataAction/info_sql_using.php';
+    require_once '../DataAction/loginData_sql_using.php';
+
     if (isset($_GET['message'])) {
         $message = $_GET['message'];
     } 
+
     session_start();
     //$data = $_GET['data'] ?? null;
     #始めにユーザーを格納するテーブルを作製しなければならない(義務) 
 
-    require_once '../DataAction/info_sql_using.php';
-    require_once '../DataAction/loginData_sql_using.php';
     make_table_Info_store();
     make_table_info();
     $name = 'ゲスト';
@@ -23,11 +26,11 @@
     <a>こんにちは <?php echo "<a>{$name}</a>";?>さん</a>
     <div>
         <a>ログイン</a>
+    </div>
         <div>
-            <?php if (!empty($message)): ?>
-                <a><?php echo $message; ?></a>
-            <?php endif; ?>
-        </div>
+        <?php if (!empty($message)): ?>
+            <a><?php echo $message; ?></a>
+        <?php endif; ?>
     </div>
     <form action='../PageAction/user_login.php' method="post">
         <div>

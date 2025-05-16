@@ -84,7 +84,7 @@
         }else{
             //ログイン失敗
             $message = 'ログイン失敗';
-            header("Location: ../Front/index.php?username=$message");
+            header("Location: ../Front/index.php?message=$message");
         }
     }
 

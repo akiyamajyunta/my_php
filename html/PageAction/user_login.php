@@ -15,9 +15,10 @@
     // パスワードのチェック
     $password = filter_input(INPUT_POST, 'password');
     $password_next = filter_input(INPUT_POST, 'password_next');
-
+$password  = 114;
     if (empty($password) and empty($password_next)){
         $message = 'パスワードを入力してください';
+        //message
         header("Location: ../Front/index.php?message=$message");
     }elseif ($password !== $password_next) {
         $message = 'パスワードが一致しません';
