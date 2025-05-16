@@ -14,25 +14,19 @@
                 #echo '接続できません';
             }
     }
-
      //テーブルの挿入
     function Insert_Info_store($table_name){
         try{
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
-//REPLACE 上書きできるかも
             $sql = "UPDATE InfoStore 
                         SET 
                     table_name = :table_name";
             $statement = $pdo->prepare($sql);
-            //$pdo->query($sql);
-
             $statement->bindValue(':table_name', $table_name, PDO::PARAM_STR);
-
             $statement->execute();
-
-            } catch (PDOException $e){
+            }catch(PDOException $e){
                 exit ($e->getMessage());
-                #echo '接続できません';
+                echo '接続できません';
             }
     }
   //データの取り出し
@@ -41,28 +35,21 @@
             $sql = 'SELECT * FROM InfoStore';
             
             $statement = $pdo->prepare($sql);
-            
             $statement->execute();
             $row = $statement->fetch(PDO::FETCH_ASSOC);
             $statement = null;
             $pdo = null;
-
             $InfoStore = [];
             $InfoStore[] = $row;
-            
             return $InfoStore[0];
     }
 
 //データの削除
     function Delete_Info_store(){
-        
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
-
             $sql = "DELETE FROM InfoStore";
+
             $statement = $pdo->prepare($sql);
             $pdo->query($sql);
-
-
-
             $statement->execute();
     }

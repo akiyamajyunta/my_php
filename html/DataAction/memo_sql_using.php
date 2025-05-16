@@ -17,34 +17,29 @@
             if ($_POST) {
                 if (isset($_POST['delete'])){
                     $id =  $_POST['delete'];
-
                     $sql = "DELETE FROM memo WHERE id = :id";
 
                     $statement = $pdo->prepare($sql);
-
                     $statement->bindValue(':id', $id, PDO::PARAM_INT);
-
                     $statement->execute();
-
                     header("Location: ../Front/main.php");
                     exit();
                 }
             }
-        }
+    }
 
 //データの挿入
         function memos_table_insert_data(){
-            $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
-                if ($_GET) {
+            if ($_GET) {
                 if (($_GET['title'] === '') and ($_GET['sentence'] === '') ){
                     header("Location: ../Front/main.php");
                     exit();
                     } else if ($_GET['title'] === '') {
                         header("Location: ../Front/main.php");
-                        exit();
                     } else if ($_GET['sentence'] === '') {
                         header("Location: ../Front/main.php");
                     }else {
+                        $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
                         $title    = $_GET['title'];
                         $sentence = $_GET['sentence'];
 
@@ -52,12 +47,9 @@
                                     (title, sentence) 
                                 VALUES 
                                     (:title , :sentence )";
-
                         $statement = $pdo->prepare($sql);
-
                         $statement->bindValue(':title', $title, PDO::PARAM_STR);
                         $statement->bindValue(':sentence', $sentence, PDO::PARAM_STR);
-
                         $statement->execute();
                         header("Location: ../Front/main.php");
                         exit();

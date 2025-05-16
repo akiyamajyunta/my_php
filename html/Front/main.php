@@ -56,7 +56,6 @@ require_once '../SetSql/using_table.php';
                 } ?>
         </table> 
     </div>
-
     <form action="../Front/index.php" method="post">
         <div>
             <button type="submit">ログアウト</button>

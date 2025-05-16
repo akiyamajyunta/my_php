@@ -8,10 +8,6 @@
     require '../DataAction/loginData_sql_using.php';
     make_table_Info_store();
 
-
-
-
-    //.$message = ''; 
     $name = 'ゲスト';
 ?>
 <!DOCTYPE html>
