@@ -1,4 +1,7 @@
 <?php
+    if (isset($_GET['message'])) {
+        $message = $_GET['message'];
+    } 
     session_start();
     //$data = $_GET['data'] ?? null;
     #始めにユーザーを格納するテーブルを作製しなければならない(義務) 

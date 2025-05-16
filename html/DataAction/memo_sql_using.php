@@ -31,13 +31,9 @@
 //データの挿入
         function memos_table_insert_data(){
             if ($_GET) {
-                if (($_GET['title'] === '') and ($_GET['sentence'] === '') ){
+                if (($_GET['title'] === '') or ($_GET['sentence'] === '') ){
                     header("Location: ../Front/main.php");
                     exit();
-                    } else if ($_GET['title'] === '') {
-                        header("Location: ../Front/main.php");
-                    } else if ($_GET['sentence'] === '') {
-                        header("Location: ../Front/main.php");
                     }else {
                         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
                         $title    = $_GET['title'];
