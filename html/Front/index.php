@@ -2,18 +2,21 @@
 
     require_once '../DataAction/info_sql_using.php';
     require_once '../DataAction/loginData_sql_using.php';
-
+    require_once '../SetSql/using_table.php';
     if (isset($_GET['message'])) {
         $message = $_GET['message'];
     } 
 
     session_start();
-    //$data = $_GET['data'] ?? null;
-    #始めにユーザーを格納するテーブルを作製しなければならない(義務) 
     make_table_info();
     make_table_Info_store();
+
+    $table_name = Pic_InfoStore();
+    $name = put_user_info($table_name);
+
     
-    $name = 'ゲスト';
+    //$name = 'ゲスト';
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

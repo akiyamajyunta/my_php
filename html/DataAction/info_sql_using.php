@@ -1,5 +1,5 @@
 <?
-    //テーブルの作製
+    //個人情報を保管するテーブルの作製
     function make_table_info(){
         try{
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
@@ -30,31 +30,31 @@
 //new_registration.php  
     function info_table_insert_data(){
         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
-            if ($_GET) {
+            if ($_GET){
                 if (($_GET['name'] === '') or ($_GET['mail'] === '') or ($_GET['password'] === '')){
                         $message = '入力されてないフォームがあります';
                         header("Location: ../Front/new_registration.php?message=$message");
-                }else {
-                $name = $_GET['name'];
-                $table_name = random_string(29);
-                $mail = $_GET['mail'];
-                $password = $_GET['password'];
-                
-                $sql = "INSERT INTO info
-                            (name, table_name, mail, password) 
-                        VALUES 
-                            (:name , :table_name, :mail, :password)";
+                }else{
+                        $name = $_GET['name'];
+                        $table_name = random_string(29);
+                        $mail = $_GET['mail'];
+                        $password = $_GET['password'];
+                        
+                        $sql = "INSERT INTO info
+                                    (name, table_name, mail, password) 
+                                VALUES 
+                                    (:name , :table_name, :mail, :password)";
 
-                $statement = $pdo->prepare($sql);
+                        $statement = $pdo->prepare($sql);
 
-                $statement->bindValue(':name', $name, PDO::PARAM_STR);
-                $statement->bindValue(':table_name', $table_name, PDO::PARAM_STR);
-                $statement->bindValue(':mail', $mail, PDO::PARAM_STR);
-                $statement->bindValue(':password', $password, PDO::PARAM_STR);
+                        $statement->bindValue(':name', $name, PDO::PARAM_STR);
+                        $statement->bindValue(':table_name', $table_name, PDO::PARAM_STR);
+                        $statement->bindValue(':mail', $mail, PDO::PARAM_STR);
+                        $statement->bindValue(':password', $password, PDO::PARAM_STR);
 
-                $statement->execute();
-                header("Location: ../Front/index.php");
-                exit();
+                        $statement->execute();
+                        header("Location: ../Front/index.php");
+                        exit();
             }
         }
     }
@@ -64,18 +64,18 @@
 
 //個人情報情報を出す(table_nameより)
     function put_user_info($table_name){
-        $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
-        $sql = "SELECT * FROM info WHERE  table_name = :table_name ";
-        $statement = $pdo->prepare($sql);
-        $statement->bindValue(':table_name', $table_name, PDO::PARAM_STR);
-        $statement->execute();     
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
+            $sql = "SELECT * FROM info WHERE  table_name = :table_name ";
+            $statement = $pdo->prepare($sql);
+            $statement->bindValue(':table_name', $table_name, PDO::PARAM_STR);
+            $statement->execute();     
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
 
-        if ($result){
-            $name = $result['name'];
-            return $name;
-        } else {
-            return 'ななし';
+            if ($result){
+                $name = $result['name'];
+                return $name;
+            }else{
+                return 'ゲストさん';
+            }
         }
-    }
 

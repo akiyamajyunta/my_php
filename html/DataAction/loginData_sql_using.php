@@ -1,5 +1,5 @@
 <?
-        //テーブルの作製
+    //個人情報を保管するテーブルの作製
     function make_table_Info_store(){
         try{
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
@@ -15,6 +15,7 @@
             }
     }
 
+    //個人情報を保管するテーブルのデータの挿入
     function Insert_Info_store($table_name){
         try{
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
@@ -32,7 +33,7 @@
             }
     }
 
-  //データの取り出し
+  //テーブルの名前の取り出し
     function Pic_InfoStore(){
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
                 $sql = 'SELECT * FROM InfoStore';
@@ -44,14 +45,12 @@
                 $pdo = null;
                 $InfoStore = [];
                 $InfoStore[] = $row;
-                //echo var_dump( $InfoStore[0]['table_name']);
-            if ($InfoStore[0]['table_name']){
-                       return  $InfoStore[0]['table_name'];//$InfoStore[0];
-                    }
-        
+            if ($InfoStore >0 ){
+                    return  $InfoStore[0]['table_name'];
+            }
     }
 
-//データの削除
+//テーブルの名前の削除
     function Delete_Info_store(){
             $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
             $sql = "DELETE FROM InfoStore";
