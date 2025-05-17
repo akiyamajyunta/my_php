@@ -65,7 +65,6 @@
 //個人情報情報を出す(table_nameより)
     function put_user_info($table_name){
         $pdo = new PDO('mysql:host=mysql; dbname=mydatas; charset=utf8','root','root');
-
         $sql = "SELECT * FROM info WHERE  table_name = :table_name ";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(':table_name', $table_name, PDO::PARAM_STR);

@@ -3,7 +3,6 @@ require '../DataAction/info_sql_using.php';
 require '../DataAction/loginData_sql_using.php';
 require_once '../SetSql/using_table.php';
 $table_name = Pic_InfoStore();
-echo $table_name;
 $name = put_user_info($table_name);
 
 

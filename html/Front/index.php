@@ -55,6 +55,12 @@
             <button type="submit">新規登録</button>
         </div>
     </form>
+    <!-- ログアウト -->
+    <form action="" method="post">
+        <div>
+            <button type="submit">ログアウト</button>
+        </div>
+    </form>
 </body>
 </html>
 
